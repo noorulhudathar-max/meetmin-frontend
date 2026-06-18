@@ -1,6 +1,3 @@
-// src/components/LoadingSpinner.tsx
-// Drop this file into src/components/LoadingSpinner.tsx
-
 export default function LoadingSpinner({ text = 'Loading...' }: { text?: string }) {
   return (
     <div style={{
