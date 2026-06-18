@@ -3,13 +3,13 @@ import { supabase } from '../lib/supabase'
 import { useState, useEffect } from 'react'
 
 const navItems = [
-  { icon: '⊞', label: 'Dashboard',      path: '/dashboard' },
+  { icon: '⊞', label: 'Dashboard',     path: '/dashboard' },
   { icon: '◫', label: 'Meetings',       path: '/meetings' },
   { icon: '✅', label: 'Action Items',  path: '/action-items' },
   { icon: '🤖', label: 'AI Assistant',  path: '/ai-assistant' },
   { icon: '📝', label: 'Transcriptions',path: '/transcriptions' },
   { icon: '👤', label: 'Profile',       path: '/profile' },
-  { icon: '🔴', label: 'Live Record', path: '/record' },
+  { icon: '🔴', label: 'Live Record',   path: '/record' },
 ]
 
 export default function Sidebar() {
@@ -143,6 +143,25 @@ export default function Sidebar() {
           </div>
         </div>
       )}
+
+      {/* ── Logout Button ── */}
+      <div
+        onClick={() => { handleLogout(); if (isMobile) setMobileOpen(false) }}
+        title={collapsed && !isMobile ? 'Log out' : undefined}
+        style={{
+          display:'flex', alignItems:'center',
+          justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
+          gap:10, padding: collapsed && !isMobile ? '10px 0' : '9px 12px',
+          borderRadius:10, marginBottom:8, cursor:'pointer', fontSize:13,
+          color: 'rgba(255,75,75,0.75)', transition:'all 0.15s', userSelect:'none',
+          flexShrink:0,
+        }}
+        onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background='rgba(255,75,75,0.1)'}
+        onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background='transparent'}
+      >
+        <span style={{ fontSize:15, flexShrink:0, width:18, textAlign:'center' }}>⚙️</span>
+        {(!collapsed || isMobile) && <span style={{ fontWeight: 500 }}>Log out</span>}
+      </div>
 
       {/* ── User row ── */}
       <div

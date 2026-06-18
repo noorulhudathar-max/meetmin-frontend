@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 import StarCanvas from '../components/StarCanvas'
 import FAQ from './FAQ'
@@ -223,7 +223,7 @@ function LoginCard({ onGoFaq }: { onGoFaq: () => void }) {
       {message && <div style={{ background:'rgba(60,200,120,0.12)', border:'1px solid rgba(60,200,120,0.28)', color:'#70e0a0', borderRadius:9, padding:'10px 13px', fontSize:13, marginBottom:14 }}>{message}</div>}
 
       <form onSubmit={handleSubmit}>
-        <Field label="Email address" type="email"    placeholder="you@company.com" value={email}    onChange={setEmail} />
+        <Field label="Email address" type="email"     placeholder="you@company.com" value={email}    onChange={setEmail} />
         <Field label="Password"      type="password" placeholder="••••••••"        value={password} onChange={setPassword} />
 
         {!isSignUp && (
@@ -280,7 +280,7 @@ function LoginCard({ onGoFaq }: { onGoFaq: () => void }) {
 }
 
 /* ── Info Pills ── */
-function InfoPills({ onGoFaq }: { onGoFaq: () => void }) {
+function InfoPills() {
   const pills = ['No credit card required', 'Free tier available', 'Cancel anytime']
   return (
     <div style={{ display:'flex', justifyContent:'center', gap:6, marginTop:12, flexWrap:'wrap', maxWidth:420, padding:'0 8px', boxSizing:'border-box' }}>
@@ -322,7 +322,7 @@ export default function Login() {
             boxSizing:'border-box',
           }}>
             <LoginCard onGoFaq={() => setPage('faq')} />
-            <InfoPills onGoFaq={() => setPage('faq')} />
+            <InfoPills />
           </div>
         </>
       )}
